@@ -1,0 +1,76 @@
+<head>
+    <link	href	= "http://dev.phene.co/assets/ss_css.css"		rel="stylesheet">
+	<script	src		= "http://scripts.phene.co/crop/0.0.2.0017"		></script>
+	<title>Crop Tool Sample</title>
+</head>
+<body>
+	<div id="body">
+		
+		<div class="post">
+			<div class="post-header">
+				<a><img class="post-avatar" src=""></a>
+				<div class="post-name"><a><b>Crop Tool Sample</b></a></div>
+				<div class="post-time"><a>Cut</a></div>
+			</div>
+			<div class="post-content">
+				<div id="crop0" style="width:500px;"></div>
+			</div>
+			<script>
+				var element	= document.getElementById('crop0'),
+					image	= 'http://img.phene.co/hycycxluuuv4hmt1cdxpwpkb5ngmivvr/posted.jpg',
+					kind	= 'cut',
+					options	= {},
+					crop0	= new _g.x(element, image, kind, options);
+			</script>
+		</div>
+		
+		<div class="post">
+			<div class="post-header">
+				<a><img class="post-avatar" src=""></a>
+				<div class="post-name"><a><b>Crop Tool Sample</b></a></div>
+				<div class="post-time"><a>Fixed-Height Frame</a></div>
+			</div>
+			<div class="post-content">
+				<div id="crop1"></div>
+			</div>
+			<script>
+				var element	= document.getElementById('crop1'),
+					image	= 'http://img.phene.co/2hbmy8r6a7s6xjlrtskx5cghown0vl87/original.jpg',
+					kind	= 'frame',
+					options	= {
+						force_height:true,
+						frame		: {
+							width	: 500,
+							height	: 500,
+						}
+					},
+					crop1     = new _g.x(element, image, kind, options);
+			</script>
+		</div>
+		
+		<div class="post">
+			<div class="post-header">
+				<a><img class="post-avatar" src=""></a>
+				<div class="post-name"><a><b>Crop Tool Sample</b></a></div>
+				<div class="post-time"><a>Fixed-Width Frame</a></div>
+			</div>
+			<div class="post-content">
+				<div id="crop2"></div>
+			</div>
+			<script>
+				var element	= document.getElementById('crop2'),
+					image	= 'http://img.phene.co/vc83hl3ex2xy2d8hjlwq8ir8aqv3f67r/posted.jpg',
+					kind	= 'frame',
+					options	= {
+						force_width	:true,
+						frame		: {
+							width	: 500,
+							height	: 500,
+						}
+					},
+					crop2     = new _g.x(element, image, kind, options);
+			</script>
+		</div>
+		
+	</div>
+</body>

@@ -1,0 +1,28 @@
+<head>
+    <link	href	= "http://dev.phene.co/assets/ss_css.css"		rel="stylesheet">
+	<script	src		= "http://scripts.phene.co/player/0.1.0.0014"	></script>
+	<title>Player Sample</title>
+</head>
+<body>
+	<div id="body">
+   
+	<div class="post">
+        <div class="post-header">
+            <a><img class="post-avatar"></a>
+            <div class="post-name"><a><b>Player Sample</b></a></div>
+            <div class="post-time"><a>Audio</a></div>
+        </div>
+        <div class="post-content">
+			<div id="aud"></div>
+			<script>
+				var id		= "tq5h31lvzh5ed8qj0x1u528ddqa58nb7",
+					src		= "http://aud.phene.co/" + id + "/original.mp3",
+					o		= {},
+					player	= _g.pl.audio(src,o);
+				_i('aud').appendChild(player);
+			</script>
+		</div>
+    </div>
+	
+	</div>
+</body>

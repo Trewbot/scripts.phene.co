@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="http://dev.phene.co/assets/ss_css.css" type="text/css" id="basecss">
+		<link rel="stylesheet" href="http://dev.phene.co/assets/ss_php.php" type="text/css" id="phpcss">
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+		<script src="http://scripts.phene.co/menu/0.4.3.0030"></script>
+	</head>
+	<body>
+		<div id="body">
+		<div class="post">
+			<div class="post-header">
+				<a><img class="post-avatar" src="http://img.phene.co/gay8yjs15ur10hh4jc10td5p8yvn0h6u/36.jpg"></a>
+				<div class="post-name"><a><b>_g.m.test</b></a></div>
+				<div class="post-time"><a href="http://dev.phene.co/">Context Menu Test</a></div>
+			</div>
+			<div class="post-content">
+				<div class="post-video">
+					<video src="http://i.4cdn.org/wsg/1423770156282.webm" controls style="height:auto;"></video>
+				</div>
+				<div class="post-desc">
+					<p>Testing a thing...</p>
+				</div>
+			</div>
+		</div>
+		<div class="post" id="test">
+			<div class="post-header">
+				<a><img class="post-avatar" src="http://img.phene.co/gay8yjs15ur10hh4jc10td5p8yvn0h6u/36.jpg"></a>
+				<div class="post-name"><a><b>_g.m.test</b></a></div>
+				<div class="post-time"><a href="http://dev.phene.co/">Context Menu Test</a></div>
+			</div>
+			<div class="post-content">
+				<div class="post-desc">
+					<p>Another thing!</p>
+				</div>
+			</div>
+		</div>
+		<script>
+			document.getElementById('test').oncontextmenu = function(e){
+				_g.m.open(e,{
+					Thing	: 'alert(\'THING!\')'
+				});
+			}
+		</script>
+	</body>
+</html>

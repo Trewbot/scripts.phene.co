@@ -1,0 +1,43 @@
+<head>
+    <link	href	= "http://dev.phene.co/assets/ss_css.css"		rel="stylesheet">
+	<script	src		= "http://scripts.phene.co/color/0.1.0.0008"	></script>
+	<script>
+		_g.t = {
+			update : function(c){
+				_c('post')[0].setAttribute('style', 'margin-left:-1px;margin-top:-1px;border:1px solid ' + c + ' !important;')
+			}
+		}
+	</script>
+	<title>Color Picker Sample</title>
+</head>
+<body>
+	<div id="body">
+    <div class="post">
+        <div class="post-header">
+            <a><img class="post-avatar" src=""></a>
+            <div class="post-name"><a><b>Color Picker Sample</b></a></div>
+            <div class="post-time"><a>Color Picker Sample</a></div>
+        </div>
+        <div class="post-content">
+			<table>
+				<tr>
+					<td class="settings-label">
+						Example Input
+					</td>
+					<td class="settings-inputs">
+						<input type="text" id="settings-accent" class="settings-text" style="width:164px">
+						<div id="settings-clr"></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<script>
+			var clr	= new _g.cl.picker(_i('settings-clr'), {
+				input	: _i('settings-accent'),
+				color	: '#64AD81',
+				func	: _g.t.update
+			});
+		</script>
+    </div>
+	</div>
+</body>
