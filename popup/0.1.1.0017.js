@@ -1,7 +1,7 @@
 /*
  *	Graphene Popup
- *	Written by Trewbot
- *	May 15, 2015
+ *	Written by Trevor J Hoglund
+ *	Dec 22, 2015
  *
  *	Version:				Date:				Description:
  *		v0.1.0.0001				Mar 23, 2015		Moved popup script to separate file.
@@ -22,6 +22,11 @@
  *													Added lightbox keyboard navigation (a,d,up,down,left,right).
  *													Fixed lightbox behavior varying between Chrome and Firefox.
  *													Fixed lightbox naviagtion keys not including a preventDefault() clause.
+ *		v0.1.0.0013				Nov 14, 2015		Fixed key commands for back.
+ *		v0.1.1.0014				Nov 15, 2015		Added styling
+ *		v0.1.1.0015				Dec 22, 2015		Added required functions for standalone
+ *		v0.1.1.0016				Dec 22, 2015		Fixed references to document.body for standalone
+ *		v0.1.1.0017				Dec 22, 2015		Added lightbox styling
  */
 
 function _i(i){return document.getElementById(i);}
@@ -49,6 +54,7 @@ ajax = function(url, type, header, ops){
 	typeof o.change == 'function' && (r.onreadystatechange = o.change);
 	return r;
 }
+
 if(typeof Graphene !== 'object'){
 	var Graphene = new(function(){
 		this.pop = true;
@@ -72,6 +78,27 @@ if(typeof Graphene !== 'object'){
 	})(),
 		_g = Graphene;
 }
+
+var __cms__ = document.createElement("style");
+__cms__.innerHTML	 = '#popup {position:relative;width:500px;height:auto;margin:auto;background:#fff;vertical-align:middle;}';
+__cms__.innerHTML	+= '#popup-shade {position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:1000;display:inline-flex;}';
+__cms__.innerHTML	+= '#popup-title {padding:6px;background:#f8f8f8;width:488px;text-align:center;}';
+__cms__.innerHTML	+= '#popup-content {padding:10px;}';
+__cms__.innerHTML	+= '#popup-confirm {position:relative;width:410px;margin:20px auto auto;}';
+__cms__.innerHTML	+= '#popup-yes {background:#444444;margin-right:10px;}';
+__cms__.innerHTML	+= '#popup-no {background:#ddd;}';
+__cms__.innerHTML	+= '.popup-option {cursor:pointer;padding:8px;width:184px;text-align:center;text-transform:uppercase;color:#FFF;display:inline-block;}';
+__cms__.innerHTML	+= '.popup-button {padding:6px;width:200px;background:#444444;color:#fff;margin:auto;margin-top:10px;font-weight:bold;text-align:center;cursor:pointer;}';
+__cms__.innerHTML	+= '#lightbox {position:relative;min-width:500px;height:auto;margin:auto;background:#fff;vertical-align:middle;}';
+__cms__.innerHTML	+= '#lightbox-shade {position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:1000;display:inline-flex;}';
+__cms__.innerHTML	+= '#lightbox-view {position:relative;min-width:500px;background:#000;display:inline-flex;min-width:500px;min-height:500px;}';
+__cms__.innerHTML	+= '#lightbox-image {margin:auto;vertical-align:middle;display:block;}';
+__cms__.innerHTML	+= '#lightbox-comments {width:300px;text-align:top;}';
+__cms__.innerHTML	+= '#lightbox-prev {position:absolute;cursor:pointer;z-index:1;height:100%;top:0;right:0;}';
+__cms__.innerHTML	+= '#lightbox-next {position:absolute;cursor:pointer;z-index:1;width:150px;height:100%;top:0;left:0;}';
+__cms__.innerHTML	+= '#lightbox table {border:0;padding:0;margin:0;}';
+__cms__.innerHTML	+= '#lightbox td {border:0;padding:0;}';
+document.documentElement.appendChild(__cms__);
 
 _g.pu = (_g.popup = {
 	lbOpen		: !1,
@@ -188,7 +215,7 @@ _g.pu = (_g.popup = {
 window.addEventListener('keyup', function(e){
 	if(_g.pu.lbOpen){
 		e.preventDefault();
-		~[39,40,68].indexOf(e.keyCode) ? _g.pu.lightbox('api',_g.pu.lbSrc,_g.pu.lbLayt,++_g.pu.lbIndx) : ~[37.38,65].indexOf(e.keyCode) ? _g.pu.lightbox('api',_g.pu.lbSrc,_g.pu.lbLayt,--_g.pu.lbIndx) : !1;
+		~[39,40,68].indexOf(e.keyCode) ? _g.pu.lightbox('api',_g.pu.lbSrc,_g.pu.lbLayt,++_g.pu.lbIndx) : ~[37,38,65].indexOf(e.keyCode) ? _g.pu.lightbox('api',_g.pu.lbSrc,_g.pu.lbLayt,--_g.pu.lbIndx) : !1;
 	}
 	
 });
