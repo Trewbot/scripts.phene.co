@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>popup | scripts.phene.co</title>
+	<link rel="stylesheet"	href="//phene.co/style.css">
+	<link rel="stylesheet"	href="//phene.co/assets/prism.css">
+	<script src="//phene.co/assets/prism.js"></script>
+	<script	src="//scripts.phene.co/popup/0.1.1.0017.min"></script>
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-67481186-3', 'auto');
+		ga('send', 'pageview');
+	</script>
+</head>
+<body>
+	<div class="content">
+		<b><a href="//scripts.phene.co/popup" id="scripts">popup</a></b> <span>(under construction)</span><hr>
+		<p>
+			_g.popup is a javascript script built to render popups for user interfaces, this includes not only informational popups but also user input, lightboxes, <span>and tutorials</span>.
+			the script was originally designed for <a href="//gra.phene.co">Graphene</a> and therefore uses the conventions for related _g scripts.
+		</p>
+		<br><br>
+		<br><br>
+		<div id="start">
+			<b><a href="#start">getting started</a></b><hr>
+			<p>
+				to begin using the popup script, one must first include the library in the html file.
+				<a target="_blank" href="//scripts.phene.co/popup/0.1.1.0017.min">the source file can be downloaded here and put on a cdn</a>
+				or use the following script tag to include it directly from phene.co:
+			</p>
+			<pre><code class="language-markup">&lt;script src="http://scripts.phene.co/popup/0.1.1.0017"&gt;&lt;/script&gt;</code></pre>
+		</div>
+		<br><br>
+		<br><br>
+		<div id="info-popup">
+			<b><a href="#info-popup">informational popups</a></b><hr>
+			<p>
+				info popups are made using the <code>_g.popup.open()</code> function.
+				the only argument for this function is the options object.
+				here is a simple example:
+			</p>
+<pre><code class="language-javascript">_g.popup.open({
+	title	: "Pop!",
+	text	: "Goes the weasel!"
+});</code></pre>
+			<p>
+				<a onclick="_g.pu.open({title:'Pop!',text:'Goes the weasel!'});">click here to test</a>
+			</p>
+			<p>
+				here is a list of options for the info popup:
+			</p>
+			<table>
+				<thead>
+					<td>option:</td>
+					<td>value:</td>
+					<td>description:</td>
+				</thead>
+				<tr>
+					<td>width</td>
+					<td>string</td>
+					<td>the width of the popup, should include units (default: 500px)</td>
+				</tr>
+				<tr>
+					<td>title</td>
+					<td>string</td>
+					<td>the title which is displayed at the top of the popup, if not present then there is no title bar rendered</td>
+				</tr>
+				<tr>
+					<td>titleColor</td>
+					<td>string</td>
+					<td>the background color of the title bar (default: #f8f8f8)</td>
+				</tr>
+				<tr>
+					<td>titleTextColor</td>
+					<td>string</td>
+					<td>the text color of the title (default designed by page css)</td>
+				</tr>
+				<tr>
+					<td>text</td>
+					<td>string</td>
+					<td>the main text of the popup (required)</td>
+				</tr>
+				<tr>
+					<td>textCenter</td>
+					<td>boolean</td>
+					<td>centers the main text (default: false)</td>
+				</tr>
+				<tr>
+					<td>confirm</td>
+					<td>boolean</td>
+					<td>creates a 'yes' and 'no' button for confirmation, requires an 'onyes' function to be ran when 'yes' is clicked</td>
+				</tr>
+			</table>
+		</div>
+		<br><br>
+		<br><br>
+		<div id="lightboxes">
+			<b><a href="#lightboxes">lightboxes</a></b><hr>
+			<p>
+				similarly, lightboxes are called with the <code>_g.popup.lightbox()</code> function.
+				this function has four arguments like so:
+			</p>
+			<pre><code class="language-javascript">_g.popup.lightbox(type,source,layout,index);</code></pre>
+			<p>
+				the type is either <code>object</code> or <code>api</code>, anything other than these is treated as <code>object</code>.
+			</p>
+			<p>
+				source changes depending on your type.
+				for the object type the source will be an object containing the list of images.
+				for the api type it will be the url of a json object that will then be read to contain the list of images.
+			</p>
+			<p>
+				layout is what tells the script where to find your images.
+				for an object where the images are found at <code>pages[0], pages[1], pages[2]...</code> the layout would be <code>pages.*</code>.
+				the asterisk is the index of pages and can only be used once in the layout, it doesn't necessarily need to be at the end.
+			</p>
+			<p>
+				the last argument, index, is the starting index.
+				this tells the script which image in the list to open first.
+				as with any index, it begins at 0.
+			</p>
+			<p>
+				here is an example used on <a href="//notes.phene.co/diffeq/1ed">notes.phene.co</a> to read the pages of notes:
+			</p>
+<pre><code class="language-javascript">_g.popup.lightbox(
+	'api',
+	'http://notes.phene.co/diffeq/1ed/read.php',
+	'pages.*',
+	0
+);</code></pre>
+			<p>
+				<a lightbox onclick="_g.pu.lightbox('api','http://notes.phene.co/diffeq/1ed/read.php','pages.*',0);">click here to test</a>
+			</p>
+		</div>
+		<br><br>
+		<br><br>
+		<a href="//scripts.phene.co">scripts</a> . <a href="//phene.co">phene.co</a>
+	</div>
+</body>
+</html>
